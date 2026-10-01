@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>DaocUiForge.Core</RootNamespace>
+    <AssemblyName>DaocUiForge.Core</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Core stays deliberately free of UI: SkiaSharp for drawing and
+         images, and otherwise nothing but the standard library. That is what
+         lets the format tests run headless. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <!-- ISO-8859-1 (the fallback for broken umlauts in old XML) comes from
+         the framework as of .NET 10; no separate package needed. -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reference data from DAoCEd (sample values, colours, events, chat
+         buffers). Embedded as a resource rather than as a block of code. -->
+    <EmbeddedResource Include="Reference\a.json" />
+    <EmbeddedResource Include="Reference\colors.json" />
+    <EmbeddedResource Include="Reference\events.json" />
+    <EmbeddedResource Include="Reference\buffers.json" />
+
+    <!-- The interface in a second language. English is the key, so there is no
+         en/ folder to keep in step (see Localization/Strings.cs). One file per
+         area of the interface, all of them read and merged: a language is a
+         folder, and a translator works through it a pane at a time. -->
+    <EmbeddedResource Include="Localization\de\*.json" />
+  </ItemGroup>
+
+</Project>

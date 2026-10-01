@@ -1,0 +1,23 @@
+{
+ " {0} ": " {0} ",
+ "+ Control": "+ Steuerelement",
+ "Apply XML": "XML übernehmen",
+ "Cancel": "Abbrechen",
+ "Close": "Schließen",
+ "Delete": "Löschen",
+ "Every file": "Alle Dateien",
+ "File": "Datei",
+ "Files": "Dateien",
+ "Height": "Höhe",
+ "Name": "Name",
+ "OK": "OK",
+ "Preview": "Vorschau",
+ "Properties": "Eigenschaften",
+ "Remove": "Entfernen",
+ "Save as text…": "Als Text speichern…",
+ "Settings…": "Einstellungen…",
+ "Text file": "Textdatei",
+ "The XML is broken: ": "Das XML ist fehlerhaft: ",
+ "Width": "Breite",
+ "{0:0.#} px": "{0:0.#} px"
+}

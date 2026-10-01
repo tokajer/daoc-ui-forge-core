@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <!-- The target framework, centrally. Moving to a new one is this line. -->
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- Off since the interface became translatable: under invariant
+         globalization CurrentUICulture is always the invariant culture, so
+         "use the system's language" could never find German
+         (Core/Localization/Strings.cs). It arms the decimal separator trap,
+         which is why every number written into the XML goes
+         through the invariant culture explicitly, and why the interface
+         formats its numbers that way too. -->
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <Version>0.1.0</Version>
+    <Authors>DAoC UI Forge Mitwirkende</Authors>
+    <Product>DAoC UI Forge</Product>
+  </PropertyGroup>
+</Project>
