@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+[Tt]est[Rr]esults/
+*.trx
+.DS_Store
+Thumbs.db
