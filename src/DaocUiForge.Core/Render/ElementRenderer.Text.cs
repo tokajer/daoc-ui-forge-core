@@ -55,6 +55,31 @@ public static partial class ElementRenderer
            the box is content-sized, and content-sized means every line. */
         string shown = s.Text;
         bool fromSample = false;
+
+        /* With an <Adapter> the engine fills the text at run time, even when
+           <Data> is set. Checked against an in-game screenshot 2026-10-08:
+           a ScalarLabelDef draws <Data> as a prefix of the value ("R" + 5 =
+           "R5", "%" + 15 = "%15" in float_realm_exp_window); a LabelDef draws
+           the value instead of <Data> (custom7 shows the member name, not its
+           <Data>group0</Data>). */
+        string adapter = SampleData.AdapterOf(s.Def);
+        if (shown.Length > 0 && adapter.Length > 0 && s.Opt.ShowSampleData)
+        {
+            // A scalar shows the number: realm_rank is "10" among the current
+            // values but "R10L9" among the texts, which SampleData prefers.
+            string? value = s.Tag == "ScalarLabelDef"
+                            && s.Ctx.Reference.Current.TryGetValue(adapter, out var scalar)
+                ? scalar
+                : SampleData.For(adapter, 0, s.Ctx.Reference);
+            if (!string.IsNullOrEmpty(value))
+            {
+                shown = s.Tag == "ScalarLabelDef" ? shown + value : value;
+                int max = (int)Num(Xml.Tx(s.Def, "MaxCharacters"));
+                if (max > 0 && shown.Length > max) shown = shown[..max];
+                fromSample = true;
+            }
+        }
+
         if (shown.Length == 0)
         {
             string ad = SampleData.AdapterOf(s.Def);

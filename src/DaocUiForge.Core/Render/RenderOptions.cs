@@ -30,7 +30,7 @@ public sealed class RenderOptions
 
     /// <summary>
     /// Editor-only hints that the game never draws: the tinted click area of an
-    /// InvisibleButtonDef, the hatched icon cell in sample list rows, and the
+    /// InvisibleButtonDef and its &lt;Label&gt;, the hatched icon cell in sample list rows, and the
     /// dark panel stand-in for a list box without a background. On by default
     /// for the editor; a preview that should look like the game turns it off.
     /// </summary>

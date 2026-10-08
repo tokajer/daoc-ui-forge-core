@@ -167,12 +167,15 @@ public static partial class ElementRenderer
                concerned (bar, percentage, realm rank/level/rp, separator)
                forms a coherent footer that way.
 
-               Horizontally this deliberately does NOT hold: button rows such
-               as the one in stats_index_window carry TopLeft+OffsetRight and
-               would otherwise come out in reverse order. */
+               Horizontally <OffsetRight> also holds together with TopLeft.
+               Checked against an in-game screenshot 2026-10-08: the
+               stats_index tab row (TopLeft+OffsetRight, X 0..140) is drawn in
+               reverse order, the X=0 inventory tab rightmost, which leaves the
+               T/G buttons at X=8 uncovered; the "%" of float_level_exp_window
+               sits at the right edge. Right/EndAligned only without TopLeft. */
             bool anchored = Flag(s.Align, "TopLeft");
-            if (!anchored && (Flag(s.Align, "Right") || Flag(s.Align, "EndAligned")
-                              || Flag(s.Align, "OffsetRight")))
+            if (Flag(s.Align, "OffsetRight")
+                || (!anchored && (Flag(s.Align, "Right") || Flag(s.Align, "EndAligned"))))
                 left = winW - s.W - pos.X;
             if (Flag(s.Align, "Bottom") || Flag(s.Align, "OffsetBottom"))
                 top = winH - s.H - pos.Y;

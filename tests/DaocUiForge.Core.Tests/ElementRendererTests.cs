@@ -49,12 +49,12 @@ public class ElementRendererTests
     // ---------------------------------------------------------------
 
     [Fact]
-    public void OffsetRight_AppliesOnlyWithoutTopLeft()
+    public void OffsetRight_AppliesWithAndWithoutTopLeft()
     {
-        /* The rule that tips button rows over: OffsetRight is an anchor, not
-           a mirrored position. Together with TopLeft the left position still
-           applies — otherwise the order of a button row reverses
-           (stats_index_window). */
+        /* OffsetRight measures from the right edge, together with TopLeft as
+           well. In game the stats_index_window tab row (TopLeft+OffsetRight)
+           is drawn in reverse order, the X=0 tab rightmost; checked against
+           an in-game screenshot 2026-10-08. */
         var pkg = Empty();
 
         var ohneTopLeft = Render(pkg, Def("""
@@ -75,7 +75,7 @@ public class ElementRendererTests
             </LabelDef>
             """), winW: 200);
         Assert.NotNull(mitTopLeft);
-        Assert.Equal(10, mitTopLeft.Bounds.Left);     // Position gilt weiter
+        Assert.Equal(150, mitTopLeft.Bounds.Left);    // 200 - 40 - 10
     }
 
     [Fact]
