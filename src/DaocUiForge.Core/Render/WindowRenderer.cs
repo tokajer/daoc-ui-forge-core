@@ -342,7 +342,7 @@ public static class WindowRenderer
             if (al is not null)
             {
                 if (Flag(al, "CenterHorizontally") || Flag(al, "CenterVertically")) continue;
-                if (!Flag(al, "TopLeft") && (Flag(al, "OffsetRight") || Flag(al, "OffsetBottom")))
+                if (Flag(al, "OffsetRight") || (!Flag(al, "TopLeft") && Flag(al, "OffsetBottom")))
                     continue;
                 grow = Flag(al, "GrowWidth") || Flag(al, "GrowHeight");
             }
