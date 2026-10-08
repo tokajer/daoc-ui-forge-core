@@ -33,6 +33,12 @@ public static partial class ElementRenderer
             }
             // Also tells ElementRenderer.cs:217 not to look for textures outside the package; a click area has none to look for whether or not the hint is drawn.
             s.ShowedSubstitute = true;
+
+            /* The game never draws the <Label> of a click area: in
+               new_group_window it names the member ("grouptarget0") and,
+               drawn, sits on top of the class column. Shown only as an
+               editor hint. Checked against an in-game screenshot 2026-10-08. */
+            if (!s.Opt.ShowEditorHints) return;
         }
 
         if (s.Text.Length == 0) return;
